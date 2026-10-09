@@ -1,1 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WS-Holding | Tecnologia, Lavandaria e Limpeza</title>
+<meta name="description" content="WS-Holding: grupo de empresas em Moçambique. WSystems (tecnologia) e WS Clean & Laundry Serviços (lavandaria, limpeza e higienização). Em breve: Gelo Real e Copy & Paper.">
+<style>
+  :root {
+    --navy: #0b1f3a;
+    --navy-2: #12305a;
+    --teal: #12a4a0;
+    --teal-dark: #0d807d;
+    --gold: #e0a93b;
+    --bg: #f5f8fb;
+    --card: #ffffff;
+    --text: #1b2a3a;
+    --muted: #5d6c7d;
+    --line: #e1e8ef;
+    --radius: 16px;
+    --shadow: 0 10px 30px rgba(11, 31, 58, .08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+  }
+  a { color: inherit; text-decoration: none; }
+  .container { width: min(1120px, 100% - 40px); margin-inline: auto; }
+
+  /* Cabeçalho */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(11, 31, 58, .96);
+    backdrop-filter: blur(6px);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+  .logo { font-weight: 800; font-size: 1.35rem; color: #fff; letter-spacing: .5px; }
+  .logo span { color: var(--teal); }
+  .nav ul { display: flex; gap: 26px; list-style: none; }
+  .nav ul a { color: #cfd9e6; font-size: .95rem; font-weight: 500; transition: color .2s; }
+  .nav ul a:hover { color: #fff; }
+
+  /* Hero */
+  .hero {
+    background:
+      radial-gradient(circle at 80% 20%, rgba(18, 164, 160, .35), transparent 45%),
+      linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: #fff;
+    padding: 110px 0 120px;
+  }
+  .badge {
+    display: inline-block; padding: 6px 14px; border-radius: 999px;
+    background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+    font-size: .85rem; margin-bottom: 22px; color: #dbe7f3;
+  }
+  .hero h1 { font-size: clamp(2.1rem, 5vw, 3.6rem); line-height: 1.15; max-width: 760px; }
+  .hero h1 em { font-style: normal; color: var(--teal); }
+  .hero p { margin-top: 20px; max-width: 600px; color: #c5d3e3; font-size: 1.1rem; }
+  .hero-actions { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 14px; }
+  .btn {
+    display: inline-block; padding: 13px 26px; border-radius: 10px;
+    font-weight: 600; font-size: .98rem; transition: transform .15s, background .2s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--teal); color: #fff; }
+  .btn-primary:hover { background: var(--teal-dark); }
+  .btn-ghost { border: 1.5px solid rgba(255,255,255,.4); color: #fff; }
+  .btn-ghost:hover { background: rgba(255,255,255,.08); }
+
+  /* Secções */
+  section { padding: 84px 0; }
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 50px; }
+  .section-head .kicker {
+    color: var(--teal-dark); font-weight: 700; font-size: .85rem;
+    text-transform: uppercase; letter-spacing: 1.5px;
+  }
+  .section-head h2 { font-size: clamp(1.7rem, 3.5vw, 2.3rem); color: var(--navy); margin: 8px 0 12px; }
+  .section-head p { color: var(--muted); }
+
+  /* Empresas */
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+  .company {
+    background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: 38px 34px; border: 1px solid var(--line);
+    border-top: 5px solid var(--teal);
+    display: flex; flex-direction: column;
+  }
+  .company.clean { border-top-color: var(--gold); }
+  .icon {
+    width: 58px; height: 58px; border-radius: 14px;
+    display: grid; place-items: center; margin-bottom: 20px;
+    background: rgba(18, 164, 160, .12); color: var(--teal-dark);
+  }
+  .clean .icon { background: rgba(224, 169, 59, .15); color: #b5811b; }
+  .icon svg { width: 30px; height: 30px; }
+  .company h3 { font-size: 1.4rem; color: var(--navy); }
+  .company .tag { color: var(--muted); font-size: .9rem; margin-bottom: 16px; }
+  .company ul { list-style: none; margin: 6px 0 26px; flex: 1; }
+  .company li { padding: 8px 0 8px 28px; position: relative; border-bottom: 1px dashed var(--line); }
+  .company li:last-child { border-bottom: none; }
+  .company li::before {
+    content: "✓"; position: absolute; left: 0; top: 8px;
+    color: var(--teal-dark); font-weight: 700;
+  }
+  .clean li::before { color: #b5811b; }
+  .contact-line { font-size: .95rem; color: var(--muted); margin-bottom: 14px; }
+  .contact-line strong { color: var(--navy); font-size: 1.1rem; }
+  .card-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn-sm { padding: 10px 20px; font-size: .92rem; }
+  .btn-wa { background: #25a244; color: #fff; }
+  .btn-wa:hover { background: #1d8638; }
+  .btn-call { border: 1.5px solid var(--navy); color: var(--navy); }
+  .btn-call:hover { background: var(--navy); color: #fff; }
+
+  /* Em breve */
+  .soon { background: #fff; }
+  .soon-card {
+    background: var(--bg); border: 2px dashed #c6d3e0; border-radius: var(--radius);
+    padding: 34px 30px; position: relative;
+  }
+  .soon-label {
+    position: absolute; top: -13px; left: 26px;
+    background: var(--navy); color: #fff; font-size: .75rem; font-weight: 700;
+    padding: 4px 14px; border-radius: 999px; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .soon-card h3 { color: var(--navy); font-size: 1.3rem; margin-bottom: 8px; }
+  .soon-card p { color: var(--muted); }
+
+  /* Contacto */
+  .contact { background: linear-gradient(135deg, var(--navy), var(--navy-2)); color: #fff; }
+  .contact .section-head h2 { color: #fff; }
+  .contact .section-head p { color: #c5d3e3; }
+  .contact .section-head .kicker { color: var(--teal); }
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: 760px; margin: 0 auto; }
+  .contact-box {
+    background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15);
+    border-radius: var(--radius); padding: 28px; text-align: center;
+  }
+  .contact-box h4 { font-size: 1.05rem; margin-bottom: 6px; }
+  .contact-box a.phone { display: block; font-size: 1.6rem; font-weight: 700; color: var(--teal); margin: 6px 0 16px; }
+
+  /* Rodapé */
+  footer { background: #071526; color: #8fa3b8; padding: 30px 0; text-align: center; font-size: .9rem; }
+  footer strong { color: #fff; }
+
+  @media (max-width: 680px) {
+    .nav ul { display: none; }
+    .hero { padding: 80px 0 90px; }
+    section { padding: 64px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#inicio" class="logo">WS<span>-</span>Holding</a>
+    <nav>
+      <ul>
+        <li><a href="#empresas">Empresas</a></li>
+        <li><a href="#em-breve">Em breve</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <div class="hero" id="inicio">
+    <div class="container">
+      <span class="badge">Grupo de empresas · Moçambique</span>
+      <h1>Soluções que fazem o seu negócio e a sua casa <em>funcionar melhor</em>.</h1>
+      <p>A WS-Holding reúne empresas de tecnologia e serviços de limpeza, com atendimento profissional e foco em resultados.</p>
+      <div class="hero-actions">
+        <a href="#empresas" class="btn btn-primary">Conheça os nossos serviços</a>
+        <a href="#contacto" class="btn btn-ghost">Fale connosco</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empresas -->
+  <section id="empresas">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">As nossas empresas</span>
+        <h2>Serviços disponíveis</h2>
+        <p>Escolha a empresa certa para a sua necessidade e contacte-nos directamente.</p>
+      </div>
+
+      <div class="grid-2">
+        <!-- WSystems -->
+        <article class="company">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="m9 9-2 2 2 2M15 9l2 2-2 2"/></svg>
+          </div>
+          <h3>WSystems</h3>
+          <div class="tag">Tecnologia e sistemas</div>
+          <ul>
+            <li>Sistemas de gestão de stock</li>
+            <li>Software de ponto de venda (POS)</li>
+            <li>Soluções tecnológicas para empresas</li>
+          </ul>
+          <p class="contact-line">Contacto: <strong>84 731 4502</strong></p>
+          <div class="card-actions">
+            <a class="btn btn-wa btn-sm" href="https://wa.me/258847314502" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn-call btn-sm" href="tel:+258847314502">Ligar</a>
+          </div>
+        </article>
+
+        <!-- WS Clean & Laundry -->
+        <article class="company clean">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5s6 6.2 6 10.5a6 6 0 0 1-12 0c0-4.3 6-10.5 6-10.5Z"/><path d="M9.5 14a2.5 2.5 0 0 0 2.5 2.5"/></svg>
+          </div>
+          <h3>WS Clean &amp; Laundry Serviços, Lda</h3>
+          <div class="tag">Lavandaria e limpeza</div>
+          <ul>
+            <li>Lavandaria</li>
+            <li>Limpeza empresarial</li>
+            <li>Limpeza residencial</li>
+            <li>Higienização de estofados</li>
+            <li>Controlo sanitário</li>
+          </ul>
+          <p class="contact-line">Contacto: <strong>86 731 4502</strong></p>
+          <div class="card-actions">
+            <a class="btn btn-wa btn-sm" href="https://wa.me/258867314502" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn-call btn-sm" href="tel:+258867314502">Ligar</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Em breve -->
+  <section class="soon" id="em-breve">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Futuramente</span>
+        <h2>Novas empresas a caminho</h2>
+        <p>A WS-Holding está a crescer. Em breve, mais dois negócios juntam-se ao grupo.</p>
+      </div>
+
+      <div class="grid-2">
+        <article class="soon-card">
+          <span class="soon-label">Em breve</span>
+          <h3>Gelo Real</h3>
+          <p>Produção e comercialização de gelo em cubos.</p>
+        </article>
+        <article class="soon-card">
+          <span class="soon-label">Em breve</span>
+          <h3>Copy &amp; Paper</h3>
+          <p>Papelaria, gráfica, serigrafia e venda de material de escritório.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="contact" id="contacto">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Contacto</span>
+        <h2>Vamos conversar?</h2>
+        <p>Ligue ou envie uma mensagem para a empresa que procura.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-box">
+          <h4>WSystems</h4>
+          <a class="phone" href="tel:+258847314502">84 731 4502</a>
+          <a class="btn btn-wa btn-sm" href="https://wa.me/258847314502" target="_blank" rel="noopener">Enviar WhatsApp</a>
+        </div>
+        <div class="contact-box">
+          <h4>WS Clean &amp; Laundry</h4>
+          <a class="phone" href="tel:+258867314502">86 731 4502</a>
+          <a class="btn btn-wa btn-sm" href="https://wa.me/258867314502" target="_blank" rel="noopener">Enviar WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p><strong>WS-Holding</strong> · Moçambique</p>
+    <p>© 2026 WS-Holding. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+</body>
+</html>
 
